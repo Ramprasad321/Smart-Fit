@@ -1,0 +1,328 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.fallBtn {
+  animation: dropBall 1.2s ease forwards;
+}
+
+@keyframes dropBall {
+  0% {
+    transform: translate(-50%, -300px) scale(0.3);
+    border-radius: 50%;
+  }
+  60% {
+    transform: translate(-50%, 20px) scale(1.2);
+  }
+  80% {
+    transform: translate(-50%, -10px) scale(1);
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.fallBtn:hover {
+  background-color: black;
+  color: white;
+  transition: 0.4s;
+}
+/* ================= BUTTON WRAPPER ================= */
+
+.ballBtnWrapper {
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ================= BALL BUTTON ================= */
+
+.ballBtn {
+  width: 50px;
+  height: 50px;
+  border-radius:50%;
+  border:solid 2px white;
+  background:rgba(17, 17, 17, 0.60);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  color: rgb(250, 251, 252);
+
+  animation:
+    bounceDrop 1s ease forwards,
+    openBtn 0.4s ease 1s forwards;
+}
+/* ================= BOUNCE ================= */
+
+@keyframes bounceDrop {
+  0% {
+    transform: translateY(-300px);
+  }
+  60% {
+    transform: translateY(20px);
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ================= OPEN ================= */
+
+@keyframes openBtn {
+  from {
+    width: 60px;
+    border-radius: 50%;
+  }
+  to {
+    width: 200px;
+    border-radius: 40px;
+  }
+}
+
+/* ================= TEXT ================= */
+
+.btnText {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+
+  animation-name: showText;
+  animation-duration: 2s;
+  animation-delay: 1.4s;
+  animation-fill-mode: forwards;
+}
+@keyframes showText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Fade text AFTER button opens */
+
+.ballBtn .btnText {
+  animation: showText 4s ease 1.4s forwards;
+}
+
+
+@keyframes showText {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ================= HOVER ================= */
+
+.ballBtn:hover {
+  background: rgba(244, 7, 7, 0.50);
+  color: rgb(2, 37, 2);
+  transition: 0.4s;
+  border: 10px solid white;
+}
+/* ================= IMAGE FADE + SCROLL ================= */
+
+.sliderTrack {
+  display: flex;
+  width: 200%;
+  gap: 40px;
+
+  opacity: 0;
+
+  animation-name: fadeImages, scroll;
+  animation-duration: 2s, 50s;
+  animation-delay:  0.90s,2s;
+  animation-timing-function: ease, linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1, infinite;
+}
+@keyframes fadeImages {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* ================= NAV BUTTON ================= */
+
+.navButton {
+  padding: 10px 25px;
+  margin-left: 10px;
+  border-radius: 30px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+/* Hover Effect */
+
+.navButton:hover {
+  background: rgba(244, 7, 7, 0.50);
+  color: rgb(2, 37, 2);
+  transition: 0.4s;
+  border: 5px solid white;
+}
+/* ================= LOGIN PAGE ================= */
+
+.loginPage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* ================= CIRCLE CONTAINER ================= */
+
+.loginCircle {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+
+  animation: popLogin 1s ease forwards;
+}
+
+/* ================= TITLE ================= */
+
+.loginTitle {
+  color: white;
+  letter-spacing: 3px;
+  font-family: Cinzel;
+}
+
+/* ================= INPUT ================= */
+
+.loginInput {
+  width: 70%;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+/* ================= BUTTON ================= */
+
+.loginBtn {
+  padding: 8px 25px;
+  border-radius: 30px;
+  border: none;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.loginBtn:hover {
+  background: black;
+  color: white;
+}
+
+/* ================= POP ANIMATION ================= */
+
+@keyframes popLogin {
+
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* ================= WRAPPER ================= */
+
+.circleWrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= ROTATING STRIPS ================= */
+
+.radialRing {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  z-index: 0;
+
+  background: repeating-conic-gradient(
+    rgb(247, 4, 4) 0deg 4deg,
+    transparent 4deg 10deg
+  );
+
+  -webkit-mask: radial-gradient(farthest-side, transparent 70%, black 71%);
+  mask: radial-gradient(farthest-side, transparent 70%, black 71%);
+
+  animation: spinRing 12s linear infinite;
+}
+
+/* ================= ROTATION ================= */
+
+@keyframes spinRing {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= LOGIN CIRCLE ================= */
+
+.loginCircle {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  backdrop-filter: blur(20px);
+  background: rgba(246, 6, 6, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  z-index: 1;
+}
